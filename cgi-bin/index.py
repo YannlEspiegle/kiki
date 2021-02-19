@@ -5,11 +5,11 @@ import cgitb
 
 cgitb.enable()
 
-
-taille = 10
+data = cgi.FieldStorage()
+taille = int(data.getvalue("taille"))
 
 print(
-    """
+    f"""
 <!doctype html>
 <html>
     <head>
@@ -21,14 +21,21 @@ print(
         <link rel="stylesheet" href="/style.css" type="text/css" media="screen" />
         <script src="/script.js"></script>
     </head>
-    <body>
+    <body onload="bot_create({taille})">
     <table>
 """
 )
 for y in range(taille):
     print("<tr>")
     for x in range(taille):
-        print(f"<td id={y}_{x} onClick='colorize(this.id)'></td>")
+        print(f"<td id={y}--{x} class='botBoard'></td>")
+    print("</tr>")
+print("</table><table>")
+
+for y in range(taille):
+    print("<tr>")
+    for x in range(taille):
+        print(f"<td id={y}_{x} class='playerBoard' onClick='colorize(this.id)'></td>")
     print("</tr>")
 
 print("</table></body></html>")
