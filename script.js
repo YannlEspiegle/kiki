@@ -12,36 +12,40 @@ function colorize(id, delim="_") {
     }
 }
 
-/*
-function color(square) {
-    if (square.style.backgroundColor === "red"){
-        square.style.backgroundColor = "blue";
-    }
-    else if (square.style.backgroundColor === "blue"){
-        square.style.backgroundColor = "green";
-    }
-    else if (square.style.backgroundColor === "green"){
-        square.style.backgroundColor = "white";
-    }
-    else{
-        square.style.backgroundColor = "red";
-    }
-}
-*/
-
 function color(square) {
     switch(square.style.backgroundColor) {
         case "red": square.style.backgroundColor = "blue"; break;
         case "blue": square.style.backgroundColor = "green"; break;
-        case "green": square.style.backgroundColor = "white"; break;
+        case "green": square.style.backgroundColor = ""; break;
         default: square.style.backgroundColor = "red";
     }
 }
 
-function bot_create(len) {
-    for (let i=0;i<len*len;i++) {
+function bot_create(len, level) {
+    for (let i=0;i<len*level;i++) {
         y = Math.floor(Math.random() * len);
         x = Math.floor(Math.random() * len);
         colorize(y+"--"+x, "--");
+        console.log(y+1, x+1);
     }
+}
+
+function clear_board(len){
+  for(let i=0; i<len; i++)
+    for(let j=0; j<len; j++){
+        let id=i+"_"+j;
+      let elem = document.getElementById(id);
+      elem.style.backgroundColor = "white";
+    }
+}
+
+function check(taille){
+  for(let i=0; i<taille; i++)
+    for(let j=0; j<taille; j++){
+      let solution = document.getElementById(i + "--" + j);
+      let test = document.getElementById(i + "_" + j);
+      if (test.style.backgroundColor != solution.style.backgroundColor)
+            return false
+    }
+  return true
 }

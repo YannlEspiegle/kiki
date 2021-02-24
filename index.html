@@ -8,8 +8,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="/style.css" type="text/css" media="screen" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-        <!-- Place favicon.ico in the root directory -->
 
     </head>
     <body>
@@ -22,6 +20,13 @@
         <![endif]-->
 
         <h1>Bienvenue sur le jeu des carrés de <strong>Kilyan Crugnola</strong></h1>
-        <p>Vous pouvez jouer juste <a href="cgi-bin/index.py?taille=10">ici</a></p>
+        <p>
+Le but du jeu est de reproduire la figure du dessus en cliquant sur les carrés de la figure du dessous,
+lorsque que vous cliquez, une croix va se former autour. Vous allez comprendre rapidement.
+        </p>
+        <form method="GET" action="cgi-bin/index.py">
+            <input type="hidden" name="taille" value="10">
+            <input type="hidden" name="level" value="2">
+            <input type="submit" value="Jouez ici !">
     </body>
 </html>

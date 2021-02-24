@@ -7,6 +7,7 @@ cgitb.enable()
 
 data = cgi.FieldStorage()
 taille = int(data.getvalue("taille"))
+level = data.getvalue("level")
 
 print(
     f"""
@@ -19,9 +20,10 @@ print(
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/style.css" type="text/css" media="screen" />
-        <script src="/script.js"></script>
+        <script>var level={level}</script>
+        <script src="../script.js"></script>
     </head>
-    <body onload="bot_create({taille})">
+    <body onload="bot_create({taille}, {level})">
     <table>
 """
 )
