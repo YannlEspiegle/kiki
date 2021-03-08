@@ -7,7 +7,7 @@ cgitb.enable()
 
 data = cgi.FieldStorage()
 taille = int(data.getvalue("taille"))
-level = data.getvalue("level")
+level = int(data.getvalue("level"))
 
 print(
     f"""
@@ -40,4 +40,15 @@ for y in range(taille):
         print(f"<td id={y}_{x} class='playerBoard' onClick='colorize(this.id)'></td>")
     print("</tr>")
 
-print("</table></body></html>")
+print(
+    f"""
+</table>
+<form onsubmit='return check({taille})' method="GET" action="./index.py">
+    <input type="hidden" name="level" value="{level+1}">
+    <input type="hidden" name="taille" value="{taille}">
+    <input type="submit" value="Vous avez fini ?">
+</form>
+
+
+</body></html>"""
+)
